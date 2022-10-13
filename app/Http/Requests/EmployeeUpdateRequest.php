@@ -25,7 +25,7 @@ class EmployeeUpdateRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'role' => 'required|string|max:255',
+            'role_id' => 'required|max:255',
         ];
     }
 }

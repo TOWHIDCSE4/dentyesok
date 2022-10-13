@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\EmployeeCreateRequest;
 use App\Http\Requests\EmployeeUpdateRequest;
 use App\Services\EmployeeService;
 use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\EmployeeRequest;
-use App\Models\Employee;
+
 
 class EmployeeController extends Controller
 {
@@ -54,7 +53,7 @@ class EmployeeController extends Controller
         $data = $request->only('name', 'role_id');
         $data['organization_id'] = auth()->user()->organization_id;
         try {
-           $this->employeeService->createEmployee($data);
+            $this->employeeService->createEmployee($data);
             return $this->successResponse(__("Create employee successfully."));
         } catch (\Exception $e) {
             report($e);
@@ -112,8 +111,8 @@ class EmployeeController extends Controller
      */
     public function destroy($id)
     {
-         $employee = $this->employeeService->findById($id);
-         $employee->delete();
+        $employee = $this->employeeService->findById($id);
+        $employee->delete();
         return $this->successResponse(__("Delete employee successfully."));
     }
 }

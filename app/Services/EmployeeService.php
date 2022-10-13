@@ -8,7 +8,7 @@ class EmployeeService
 {
 
     public function allData(){
-        return Employee::query()->latest();
+        return Employee::with('role')->latest();
     }
 
     public function createEmployee($data){

@@ -26,8 +26,8 @@
 					<td style="width: 10%">{{role.id}}</td>
 					<td style="width: 20%">{{role.name}}</td>
 					<td style="width: 45%">
-						<button @click.prevent="editEmployee(role)" class="btn btn-primary">Edit</button>
-						<button @click.prevent="deleteEmployee(role.id)" class="btn btn-danger">Delete</button>
+<!--						<button @click.prevent="editEmployee(role)" class="btn btn-primary">Edit</button>-->
+<!--						<button @click.prevent="deleteRole(role.id)" class="btn btn-danger">Delete</button>-->
 					</td>
 				</tr>
 			 </tbody>
@@ -47,13 +47,17 @@ import Form from 'form-backend-validation';
 export default {
   data() {
     return {
-      role: {},
+      roles: [],
       form: new Form(),
       loading: true
     }
   },
   methods: {
-	async createRole() {
+    async getRoles(){
+      const res = await axios.get(route('api.role.roleList'));
+      this.roles = res.data.roles;
+    },
+	  async createRole() {
       try {
         this.loading = true;
         this.form = new Form(this.role)
@@ -76,19 +80,15 @@ export default {
         this.loading = false;
       }
     },
-    async allData() {
-      const res = await axios.get(route('api.role.allData'))
-      this.role = res.data;
-      this.loading = false;
-    },
-    async DeleteRole(id){
-      const res= await axios.post(route('api.role.deleteRole'))
+
+    async deleteRole(id){
+      const res= await axios.delete(route('api.role.deleteRole'))
       this.role=res.data;
       this.loading=false;
     }
   },
   mounted() {
-    this.allData()
+    this.getRoles()
   }
 }
 </script>
