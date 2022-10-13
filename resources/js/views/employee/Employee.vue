@@ -23,14 +23,14 @@
             </tr>
             </thead>
             <tbody>
-            <tr v-for="emp in employees" :key="emp.id">
+            <tr v-for="(emp,index) in employees" :key="emp.id">
               <td>
                   <span class="custom-checkbox">
                     <input type="checkbox" >
                     <label for="selectAll"></label>
                   </span>
               </td>
-              <td>{{emp.id}}</td>
+              <td>{{index + 1 }}</td>
               <td>{{emp.name}}</td>
               <td>
                 <span class="badge badge-success">{{emp.role ? emp.role.name : emp.role_id }}</span>

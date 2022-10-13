@@ -22,8 +22,8 @@
                   </tr>
               </thead>
 			  <tbody>
-					<tr v-for="role in roles" :key="role.id">
-					<td style="width: 10%">{{role.id}}</td>
+					<tr v-for="(role,index) in roles" :key="role.id">
+					<td style="width: 10%">{{index + 1}}</td>
 					<td style="width: 20%">{{role.name}}</td>
 					<td style="width: 45%">
 <!--						<button @click.prevent="editEmployee(role)" class="btn btn-primary">Edit</button>-->
