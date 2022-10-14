@@ -167,6 +167,7 @@ export default {
         this.loading = true;
         await this.form.post(route('api.employee.createEmployee'))
         $('#addEmployeeModal').modal('hide')
+        this.clearForm()
         this.allData();
 
       } catch (e) {
@@ -187,6 +188,7 @@ export default {
         this.loading = true;
         await this.form.post(`/api/employees/update/${this.id}`)
         $('#editEmployeeModal').modal('hide')
+        this.clearForm()
         this.allData();
         this.loading = false;
       } catch (e) {
@@ -209,6 +211,10 @@ export default {
         console.log(e)
       });
 
+    },
+    clearForm(){
+      this.form.name = '';
+      this.form.role_id = '';
     }
 
   },

@@ -31,7 +31,8 @@ Route::post('employees/update/{id}','EmployeeController@update')->name('api.empl
 Route::delete('employee/delete/{id}','EmployeeController@destroy')->name('api.employee.deleteEmployee');
 
 //Role
-Route::get('role','RoleController@allData')->name('api.role.allData');
-Route::post('role','RoleController@createRole')->name('api.role.createEmployee');
-Route::post('role','RoleController@updateRole')->name('api.role.updateEmployee');
 Route::get('role','RoleController@roleList')->name('api.role.roleList');
+Route::get('roles','RoleController@index')->name('api.role.allData');
+Route::post('roles','RoleController@store')->name('api.role.createRole');
+Route::post('roles/{id}','RoleController@update')->name('api.role.updateRole');
+Route::delete('roles/{id}','RoleController@destroy')->name('api.role.deleteRole');
