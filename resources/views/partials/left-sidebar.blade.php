@@ -8,10 +8,10 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 @foreach($menus as $menu)
                 <li class="nav-item">
-                    <a href="{{ $menu['route'] }}" class="nav-link  @if(isset($menu['active']))active @endif">
+                    <router-link to="{{ $menu['route'] }}" class="nav-link  @if(isset($menu['active']))active @endif">
                         <i class="{{ $menu['icon'] }} nav-icon"></i>
                         <p>{{ $menu['text'] }}</p>
-                    </a>
+                    </router-link>
                 </li>
                 @endforeach
             </ul>

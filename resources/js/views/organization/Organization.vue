@@ -1,10 +1,12 @@
 <template>
-  <div>User List</div>
+  <div>
+    Organization list
+  </div>
 </template>
 
 <script>
 export default {
-  name: "User",
+  name: "Organization",
   data() {
     return {
       name: ''
@@ -20,7 +22,9 @@ export default {
   mounted() {
 
   },
+  created() {
 
+  },
 }
 </script>
 
