@@ -30,5 +30,12 @@ return [
             'order' => 4,
             'authorize' => ['timetable.index'],
         ],
+        'organization' => [
+            'text' => 'Organizations ',
+            'icon' => 'fa fa-users',
+            'route' => '/organization',
+            'order' => 5,
+            'authorize' => ['timetable.index'],
+        ],
     ]
 ];
