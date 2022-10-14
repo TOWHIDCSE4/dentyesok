@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\EmployeeCreateRequest;
 use App\Http\Requests\EmployeeUpdateRequest;
 use App\Services\EmployeeService;
 use App\Traits\ApiResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 
@@ -26,21 +24,11 @@ class EmployeeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function allData()
+    public function index()
     {
         $employees = $this->employeeService->allData()->paginate(10);
 
         return $this->dataResponse($employees, 'Employee list');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -75,16 +63,6 @@ class EmployeeController extends Controller
         return $this->dataResponse($employee, 'Employee Details');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.

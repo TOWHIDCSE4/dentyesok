@@ -153,7 +153,7 @@ export default {
   },
   methods: {
     async allData() {
-      const res = await axios.get(route('api.employee.allData'));
+      const res = await axios.get(route('employees.index'));
       this.employees = res.data.data;
       this.loading = false;
     },
@@ -165,7 +165,7 @@ export default {
     async createEmployee() {
       try {
         this.loading = true;
-        await this.form.post(route('api.employee.createEmployee'))
+        await this.form.post(route('employees.store'))
         $('#addEmployeeModal').modal('hide')
         this.clearForm()
         this.allData();
@@ -186,7 +186,7 @@ export default {
     async updateEmployee() {
       try {
         this.loading = true;
-        await this.form.post(`/api/employees/update/${this.id}`)
+        await this.form.put(route('employees.update',this.id))
         $('#editEmployeeModal').modal('hide')
         this.clearForm()
         this.allData();
@@ -204,7 +204,7 @@ export default {
     },
 
     async employeeDeleted(){
-      await axios.delete(`/api/employee/delete/${this.id}`).then((res)=>{
+      await axios.delete(route('employees.destroy',this.id)).then((res)=>{
         $('#deleteEmployeeModal').modal('hide')
         this.allData()
       }).catch((e)=>{

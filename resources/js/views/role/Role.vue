@@ -27,7 +27,7 @@
 					<td style="width: 20%">{{role.name}}</td>
 					<td style="width: 45%">
 						<button @click.prevent="editRole(role)" class="btn btn-primary">Edit</button>
-<!--						<button @click.prevent="deleteRole(role.id)" class="btn btn-danger">Delete</button>-->
+						<button @click.prevent="deleteRole(role.id)" class="btn btn-danger">Delete</button>
 					</td>
 				</tr>
 			 </tbody>
@@ -133,7 +133,7 @@ export default {
 	  async createRole() {
       try {
         this.loading = true;
-        await this.form.post(route('api.role.createRole'))
+        await this.form.post(route('roles.store'))
         $('#addModal').modal('hide');
         this.clearForm();
         this.getRoles();
@@ -152,7 +152,7 @@ export default {
     async updateRole() {
       try {
         this.loading = true;
-        await this.form.post(route('api.role.updateRole',this.id))
+        await this.form.put(route('roles.update',this.id))
         $('#editModal').modal('hide');
         this.clearForm();
         this.getRoles();
@@ -169,7 +169,7 @@ export default {
       $('#deleteModal').modal('show');
     },
     async deletedRole(){
-      await axios.delete(route('api.role.deleteRole',this.id))
+      await axios.delete(route('roles.destroy',this.id))
       $('#deleteModal').modal('hide');
       this.getRoles();
       this.loading=false;
