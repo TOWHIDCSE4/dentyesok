@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+
 use App\Http\Requests\RoleCreateRequest;
 use App\Http\Requests\RoleUpdateRequest;
 use App\Services\RoleService;
 use App\Traits\ApiResponse;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\RoleRequest;
-use App\Models\Role;
 use Illuminate\Support\Str;
 
 class RoleController extends Controller
